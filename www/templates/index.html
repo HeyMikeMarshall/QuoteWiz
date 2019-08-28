@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QuoteWiz</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">QuoteWiz<text id="v-flag">pre-alpha</text></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/features">Features</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="https://www.linkedin.com/in/heymikemarshall/">@heyMikeMarshall</a>
+                <a class="dropdown-item" href="https://kmbs.konicaminolta.us/">About Konica Minolta</a>
+                <a class="dropdown-item" href="https://sec.kmbs.us/version2/catalog.html">About Dispatcher Phoenix</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 jumbotron text-center">
+                  <h2>get your quote on</h2>
+                </div>
+              </div>
+          <div class ="row">
+          <div class="col-md-4">
+      <div class="card" style="width: 18rem; height: 18rem;">
+          <a href="/dppkgquote/"><img class="card-img-top" src="/static/img/open-box-icon-10.jpg" alt="Card image cap"></a>
+          <div class="card-body">
+            <h5 class="card-title">Build with Packages</h5>
+            <p class="card-text">Build a quote by selecting options in an easy to navigate form.</p>
+            <a href="/dppkgquote/" class="btn btn-primary">Enter</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card" style="width: 18rem; height: 18rem;">
+              <a href="/dpmsrenewal/"><img class="card-img-top" src="/static/img/refresh.png" alt="Card image cap"></a>
+              <div class="card-body">
+                <h5 class="card-title">M&S Renewal</h5>
+                <p class="card-text">Plug in a link to a Maintenance Report, and get a quote automatically!</p>
+                <a href="/dpmsrenewal/" class="btn btn-primary">Enter</a>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+      <div class="card" style="width: 18rem; height: 18rem;">
+              <a href="/dpmlquote/"><img class="card-img-top" src="/static/img/34100.svg" alt="SmartQuote"></a> 
+              <div class="card-body">
+                <h5 class="card-title">SmartQuote</h5>
+                <p class="card-text">Pick the nodes you need and leave those pesky configurations to us.</p>
+                <a href="/dpmlquote/" class="btn btn-primary">Enter</a>
+              </div>
+            </div>
+          </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+
+</body>
+
+</html>

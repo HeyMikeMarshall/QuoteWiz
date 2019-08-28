@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QuoteWiz</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">QuoteWiz<text id="v-flag">pre-alpha</text></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/features">Features</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="https://www.linkedin.com/in/heymikemarshall/">@heyMikeMarshall</a>
+                <a class="dropdown-item" href="https://kmbs.konicaminolta.us/">About Konica Minolta</a>
+                <a class="dropdown-item" href="https://sec.kmbs.us/version2/catalog.html">About Dispatcher Phoenix</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        </nav>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well">
+          <h5></h5>
+          <form action="/dppkgquote/" method="post">
+              <fieldset>
+                  <legend>Quote Info</legend>
+                  <table>
+                      <tr>
+                          <td>
+                              Solutions Consultant:<br>
+                              <input type="text" name="bsc-name">
+                          </td>
+                          <td>
+                              Account Rep:<br>
+                              <input  type="text" name="rep-name">
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              Client Name:<br>
+                              <input type="text" name="client-name">
+                          </td>
+                          <td>
+                              CRM Account ID:<br>
+                              <input type="number" name="sap-id">
+                          </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Date:<br>
+                          <input type="date" name="quote-date" id="datepicker">
+                        </td>
+                      </tr>
+                  </table>
+              </fieldset>
+              <br>
+          
+              <fieldset>
+                  <legend>Primary Options</legend>
+                  <table>
+                      <tr>
+                          <td>
+                              Base Edition:<br>
+                              <select name="edition" id="selEdition" onchange="optionChanged(this.value)"></select><br>
+                          </td>
+                          
+                          <td>
+                              Additional Inputs:<br>
+                              <input type="number" value="0" name="input-count"><br>
+                          </td>
+                      </tr>
+          
+                      <tr>
+                          <td>
+                              Maintenance Years:<br>
+                              <select id="selMaintTerm" name="maint-years">
+                                  <option>1</option>
+                                  <option>3</option>
+                                  <option>5</option>
+                              </select><br>
+                          </td>
+                          <td>
+                              Price Level:<br>
+                              <select id="priceLevel" name="price-level" disabled>
+                                  <option>List</option>
+                                  <option>Target</option>
+                                  <option>Floor</option>
+                              </select><br>
+                          </td>
+                      </tr>
+                  </table>
+              </fieldset>
+              <br>
+              <fieldset>
+                <legend>Secondary Options</legend>
+                <table>
+                  <tr>
+                    <td>
+                      <input class="optchk" id="BARCODE2D-chk" type="checkbox" name="option-2dbarcode">
+                      <label for="BARCODE2D-chk">2D Barcode Processing</label><br>
+
+                      <input class="optchk" id="BOOKBILDBNDL-chk" type="checkbox" name="option-bookbildbndl">
+                      <label for="BOOKBILDBNDL-chk">AccurioPro Connect Book Builder</label><br>
+
+                      <input class="optchk" id="CONNCONN-chk" type="checkbox" name="option-connconn">
+                      <label for="CONNCONN-chk">AccurioPro Connect Connectivity Bundle</label><br>
+
+                      <input class="optchk" id="FLUXCONN-chk" type="checkbox" name="option-fluxconn">
+                      <label for="FLUXCONN-chk">AccurioPro Connect Flux Connector</label><br>
+
+                      <input class="optchk" id="POWERTOOLS-chk" type="checkbox" name="option-powertools">
+                      <label for="POWERTOOLS-chk">AccurioPro Connect Power Tools</label><br>
+
+                      <input class="optchk" id="ACPUPGRADE-chk" type="checkbox" name="option-acpupgrade">
+                      <label for="ACPUPGRADE-chk">AccurioPro Connect Upgrade Package</label><br>
+
+                      <input class="optchk" id="ADVBATES-chk" type="checkbox" name="option-advbates">
+                      <label for="ADVBATES-chk">Advanced Bates Stamp</label><br>
+
+                      <input class="optchk" id="ADVOCR-chk" type="checkbox" name="option-advocr">
+                      <label for="ADVOCR-chk">Advanced OCR</label><br>
+
+                      <input class="optchk" id="BARCODE1D-chk" type="checkbox" name="option-1dbarcode">
+                      <label for="BARCODE1D-chk">Barcode Processing</label><br>
+
+                      <input class="optchk" id="BUBGRADER-chk" type="checkbox" name="option-bubgrader">
+                      <label for="BUBGRADER-chk">Bubble Grader</label><br>
+
+                      <input class="optchk" id="CONVOFFICE-chk" type="checkbox" name="option-convoffice">
+                      <label for="CONVOFFICE-chk">Convert to MS Office</label><br>
+
+                      <input class="optchk" id="CONVPDF-chk" type="checkbox" name="option-convpdf">
+                      <label for="CONVPDF-chk">Convert to PDF</label><br>
+                    </td>
+                    <td>
+                      <input class="optchk" id="COPYDEF-chk" type="checkbox" name="option-copydef">
+                      <label for="COPYDEF-chk">Copy Defender</label><br>
+
+                      <input class="optchk" id="DISTROBNDL-chk" type="checkbox" name="option-distrobndl">
+                      <label for="DISTROBNDL-chk">Distribution Connector Bundle</label><br>
+
+                      <input class="optchk" id="DROPBOXIN-chk" type="checkbox" name="option-dropboxin">
+                      <label for="DROPBOXIN-chk">Dropbox In</label><br>
+
+                      <input class="optchk" id="EMAILBNDL-chk" type="checkbox" name="option-emailbndl">
+                      <label for="EMAILBNDL-chk">Email Bundle</label><br>
+
+                      <input class="optchk" id="FILEPARSE-chk" type="checkbox" name="option-fileparse">
+                      <label for="FILEPARSE-chk">File Parsing Bundle</label><br>
+
+                      <input class="optchk" id="FORMSPROC-chk" type="checkbox" name="option-formsproc">
+                      <label for="FORMSPROC-chk">Forms Processing</label><br>
+
+                      <input class="optchk" id="HL7-chk" type="checkbox" name="option-hl7">
+                      <label for="HL7-chk">HL7 Bundle</label><br>
+
+                      <input class="optchk" id="KDKGENCON-chk" type="checkbox" name="option-kdkgencon">
+                      <label for="KDKGENCON-chk">KDK Generator - Converter</label><br>
+
+                      <input class="optchk" id="LASERFICHE-chk" type="checkbox" name="option-laserfiche">
+                      <label for="LASERFICHE-chk">Laserfiche Connector</label><br>
+
+                      <input class="optchk" id="LPRINPUT-chk" type="checkbox" name="option-lprinput">
+                      <label for="LPRINPUT-chk">LPR Input</label><br>
+
+                      <input class="optchk" id="METABNDL-chk" type="checkbox" name="option-metabndl">
+                      <label for="METABNDL-chk">Metadata Bundle</label><br>
+
+                      <input class="optchk" id="OCRASIAFONT-chk" type="checkbox" name="option-ocrasiafont">
+                      <label for="OCRASIAFONT-chk">OCR Asian Font Pack</label><br>
+                    </td>
+                    <td>
+                      <input class="optchk" id="ODBC-chk" type="checkbox" name="option-odbc">
+                      <label for="ODBC-chk">ODBC Processing</label><br>
+
+                      <input class="optchk" id="ONBASE-chk" type="checkbox" name="option-onbase">
+                      <label for="ONBASE-chk">OnBase Connector</label><br>
+
+                      <input class="optchk" id="PGCOLROUTE-chk" type="checkbox" name="option-pgcolroute">
+                      <label for="PGCOLROUTE-chk">Page Count & Color Route</label><br>
+
+                      <input class="optchk" id="PDFPROC-chk" type="checkbox" name="option-pdfproc">
+                      <label for="PDFPROC-chk">PDF Processing Bundle</label><br>
+
+                      <input class="optchk" id="PRINTFILE-chk" type="checkbox" name="option-printfile">
+                      <label for="PRINTFILE-chk">Print to File</label><br>
+
+                      <input class="optchk" id="HSREDACT-chk" type="checkbox" name="option-hsredact">
+                      <label for="HSREDACT-chk" >Highlight, Redact & Strikeout</label><br>
+
+                      <input class="optchk" id="RXSHIELD-chk" type="checkbox" name="option-rxshield">
+                      <label for="RXSHIELD-chk">Rx Shield</label><br>
+
+                      <input class="optchk" id="SHAREPOINT-chk" type="checkbox" name="option-sharepoint">
+                      <label for="SHAREPOINT-chk">SharePoint Connector</label><br>
+
+                      <input class="optchk" id="WINFAX-chk" type="checkbox" name="option-winfax">
+                      <label for="WINFAX-chk">Windows Fax Connector</label><br>
+
+                      <input class="optchk" id="WORKSHARE-chk" type="checkbox" name="option-workshare">
+                      <label for="WORKSHARE-chk">Workshare Connector</label><br>
+
+                      <input class="optchk" id="WORLDOX-chk" type="checkbox" name="option-worldox">
+                      <label for="WORLDOX-chk">Worldox Connector</label><br>
+                    </td>    
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="option-mobile" id="mobile-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                      <label for="mobile-chk">DP Mobile</label><br>
+                      <div class="condinput" id="option-mobile-opts" hidden=false>
+                        Mobile User Count:<br>
+                        <input type="number" value="0" min="0" name="mobile-users"><br>
+                      </div>
+                      <input type="checkbox" name="option-release2me" id="release2me-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                      <label for="release2me-chk">Release2Me</label><br>
+                      <div class="condinput" id="option-release2me-opts" hidden="true">
+                        Release2Me Devices:<br>
+                        <input type="number" value="0" min="0" name="release2me-devices"><br>
+                      </div>
+                    </td>
+                    <td>
+                      <input type="checkbox" name="option-batch" id="batch-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                      <label for="batch-chk">Batch Indexing</label><br>
+                        <div class="condinput" id="option-batch-opts" hidden="true">
+                        Batch Indexing User Count:<br>
+                        <input type="number" value="0" min="0" name="batch-users"><br>
+                      </div>
+                      <input type="checkbox" name="workstation" id="workstation-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                      <label for="workstation-chk">Workstation</label><br>
+                        <div  class="condinput" id="option-workstation-opts" hidden="true">
+                        Workstation User Count:<br>
+                        <input type="number" value="0" min="0" name="workstation-users"><br>
+                      </div>
+                    </td>
+                  </tr>
+
+                </table>
+                
+              </fieldset>
+              <br>
+
+
+              <fieldset>
+                <legend>Enterprise Options</legend>
+                  <table>
+                    <tr>
+                      <td>
+                        <input type="checkbox" name="ent-multi" id="multi-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="multi-chk">Multi-Primary Cluster</label><br>
+                        <div id="ent-multi-opts" hidden="true">
+                          Additional Server Count:<br>
+                          <input type="number" min="0" value="0" name="ent-multi-count"><br>
+                        </div>
+                      </td>
+                      <td>
+                        <input type="checkbox" name="ent-failover" id="failover-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="failover-chk">Failover Cluster</label><br>
+                        <div id="ent-failover-opts" hidden="true">
+                          Failover Server Count:<br>
+                          <input type="number" min="0" value="0" name="ent-failover-count"><br>
+                        </div>
+                      </td>
+                      <td>
+                        Offload Server Options:<br>
+                        <input type="checkbox" name="workflowb" id="olworkflowb-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="olworkflowb-chk">Workflow Basic</label><br>
+                        <div id="workflowb-opts" hidden="true">
+                            Workflow Basic Servers:<br>
+                            <input type="number" min="0" value="0" name="ent-workflowb-count"><br>
+                          </div>
+                        <input type="checkbox" name="workflowa" id="olworkflowa-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="olworkflowa-chk">Workflow Advanced</label><br>
+                        <div id="workflowa-opts" hidden="true">
+                            Workflow Adv. Servers:<br>
+                            <input type="number" min="0" value="0" name="ent-workflowa-count" ><br>
+                          </div>
+                        <input type="checkbox" name="offloadweb" id="olweb-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="olweb-chk">Web Connectivity</label><br>
+                        <div id="offloadweb-opts" hidden="true">
+                            Web Offload Servers:<br>
+                            <input type="number" min="0" value="0" name="ent-offloadweb-count"><br>
+                          </div>
+                        <input type="checkbox" name="offloadmobile" id="olmobile-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="olmodbile-chk">Mobile Connectivity</label><br>
+                        <div id="offloadmobile-opts" hidden="true">
+                            Mobile Offload Servers:<br>
+                            <input type="number" min="0" value="0" name="ent-offloadmobile-count"><br>
+                          </div>
+                        <input type="checkbox" name="offloadmfp" id="olmfp-chk" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="olmfp-chk">MFP Connectivity</label><br>
+                        <div id="offloadmfp-opts" hidden="true">
+                            MFP Offload Servers:<br>
+                            <input type="number" min="0" value="0" name="ent-offloadmfp-count"><br>
+                          </div>
+                      </td>
+                    </tr>
+                  </table>
+              </fieldset>
+              <br>
+              <fieldset>
+                <legend>Professional Services</legend>
+                <input type="checkbox" name="sec-consult" id="sec-consult" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="sec-consult">SEC Consultation Services</label><br>
+                        <div id="sec-consult-opts" hidden="true">
+                            Hours:<br>
+                            <input type="number" min="0" value="0" name="sec-consult-hours"><br>
+                        </div>
+                <input type="checkbox" name="sec-develop" id="sec-develop" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="sec-develop">SEC Development Services</label><br>
+                        <div id="sec-develop-opts" hidden="true">
+                                Hours:<br>
+                                <input type="number" min="0" value="0" name="sec-develop-hours"><br>
+                              </div>
+                <input type="checkbox" name="kmbs-install" id="kmbs-install" onchange="qtyChkChanged(this.checked, this.name)">
+                        <label for="kmbs-install">KMBS Installation & Training</label><br>
+                        <div id="kmbs-install-opts" hidden="true">
+                                Hours:<br>
+                                <input type="number" min="0" value="0" name="kmbs-install-hours"><br>
+                              </div>
+                <input type="checkbox" name="sec-remote" id="sec-remote">
+                                <label for="sec-remote">Remote Installation Promo (4hrs)</label><br>
+                                
+              </fieldset>
+
+
+
+
+
+
+              <br>
+              <input type="submit" value="Generate Quote"> <input type="reset" value="Reset Form">
+          </form>
+        </div>
+
+  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/pkg-formhandler.js') }}"></script>
+
+</body>
+
+</html>

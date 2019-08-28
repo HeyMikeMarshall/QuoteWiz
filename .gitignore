@@ -1,3 +1,13 @@
+.vscode/
+_instructions/
+config.js
+config.py
+config.ini
+settings.json
+__pycache__
+/local
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

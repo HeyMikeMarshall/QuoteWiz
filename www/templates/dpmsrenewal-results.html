@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QuoteWiz</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">QuoteWiz<text id="v-flag">pre-alpha</text></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/features">Features</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="https://www.linkedin.com/in/heymikemarshall/">@heyMikeMarshall</a>
+                <a class="dropdown-item" href="https://kmbs.konicaminolta.us/">About Konica Minolta</a>
+                <a class="dropdown-item" href="https://sec.kmbs.us/version2/catalog.html">About Dispatcher Phoenix</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        </nav>
+
+    <div class="row">
+        <div class="col-md-6">
+          <div class="well">
+            <h3 id="edition-header"></h3>
+            <p id="quote-info"></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well">
+              <table id="official-use">
+              </table>
+
+
+
+
+
+            </div>
+          </div>
+    </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Maintenance Pricing & Configuration</h3>
+          </div>
+          <div id="priceAndConfigBody" class="panel-body">
+            <div id="table-area" class="">
+                <table id="pricing-table" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="table-head">Item Number</th>
+                      <th class="table-head">Description</th>
+                      <th class="table-head">Unit Price</th>
+                      <th class="table-head">Quantity</th>
+                      <th class="table-head">Extended Price</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pricing-body">
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+    </div>
+  </div>
+
+  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/ms-reshandler.js') }}"></script>
+
+</body>
+
+</html>
